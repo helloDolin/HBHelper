@@ -1,0 +1,40 @@
+{
+  "name": "HBHelper",
+  "description": "A imba tool.",
+  "version": "0.0.1",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "css": [
+        "css/index.css"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "lib/sha1.js",
+    "lib/totp.js",
+    "lib/qrcode.bundle.js",
+    "js/app-sso.js",
+    "js/app-wf.js",
+    "js/app-wf-robot.js"
+  ],
+  "browser_action": {
+    "default_title": "TOTP"
+  },
+  "manifest_version": 2
+}
