@@ -31,7 +31,8 @@
     "lib/qrcode.bundle.js",
     "js/app-sso.js",
     "js/app-wf.js",
-    "js/app-wf-robot.js"
+    "js/app-wf-robot.js",
+    "js/app-crp.js"
   ],
   "browser_action": {
     "default_title": "TOTP"

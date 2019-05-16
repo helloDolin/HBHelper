@@ -29,6 +29,7 @@ function insertSSOScript() {
 
 function init() {
   var href = location.href;
+  var host = location.host;
   if (/sso\.(hellobike|cheyaoshi)/.test(href)) {
     // 注入TOTP相关js
     addScriptOnce('lib/sha1.js', 'sha1');
@@ -36,14 +37,8 @@ function init() {
     addScriptOnce('lib/qrcode.bundle.js', 'qrcode.bundle');
 
     insertSSOScript();
-  } else if (/workflow\.hellobike[\s\S]+release\/\d+/.test(href)) {
-    // 注入workflow相关js
-
-    setTimeout(function () {
-      addScriptOnce('js/app-wf.js', 'main-script');
-    }, 100);
-  } else if (/\/\?apply_user=\d+/.test(href)) {
-    // addScriptOnce('js/app-wf-robot.js', 'main-script');
+  } else if (host === 'crp.hellobike.cn') {
+    addScriptOnce('js/app-crp.js');
   }
 }
 
