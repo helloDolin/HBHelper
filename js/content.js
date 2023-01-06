@@ -1,7 +1,7 @@
 function createScript(file, id) {
   var s = document.createElement('script');
   id && (s.id = id);
-  s.src = chrome.extension.getURL(file) + '?' + new Date().getTime();
+  s.src = chrome.runtime.getURL(file) + '?' + new Date().getTime();
 
   return s;
 }
@@ -30,7 +30,7 @@ function insertSSOScript() {
 function init() {
   var href = location.href;
   var host = location.host;
-  if (/sso\.(hellobike|cheyaoshi)/.test(href)) {
+  if (/sso.*\.(hellobike|cheyaoshi)/.test(href)) {
     // 注入TOTP相关js
     addScriptOnce('lib/sha1.js', 'sha1');
     addScriptOnce('lib/totp.js', 'totp');
